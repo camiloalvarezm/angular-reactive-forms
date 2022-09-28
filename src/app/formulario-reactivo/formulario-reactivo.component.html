@@ -1,0 +1,27 @@
+<h1>Formulario básico</h1>
+
+<div class="contact">
+    <h1>Contact</h1>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario)" class="form" novalidate>
+
+        <label>Username</label>
+        <input formControlName="username" />
+        <p style="color: red" *ngIf="formulario.get('username').hasError('required')">Ingrese un nombre de usuario valido.</p>
+        <p style="color: red" *ngIf="formulario.get('username').hasError('minlength')">Minimo 3 caracteres.</p>
+        <p style="color: red" *ngIf="formulario.get('username').hasError('maxlength')">Maximo 8 caracteres.</p>
+
+        <label>Email</label>
+        <input formControlName="email" />
+
+        <hr>
+        <div>
+            <input type="submit" [disabled]="!formulario.valid" />
+        </div>
+    </form>
+
+    <!-- <p>
+        {{formulario.value | json}}
+    </p> -->
+
+    <!-- <p>{{ formulario.valid }}</p> -->
+</div>
